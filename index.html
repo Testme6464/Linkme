@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ပထမ စာမျက်နှာ</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        /* Countdown text အတွက် style */
+        #countdown-message {
+            font-size: 18px;
+            color: #555;
+        }
+        #timer {
+            font-weight: bold;
+            color: #d9534f;
+        }
+        /* ခလုတ်ကို အစမှာ ဖျောက်ထားရန် */
+        #button-wrapper {
+            display: none;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>ပထမ စာမျက်နှာ (Page 1)</h1>
+        
+        <!-- Countdown ပြသမည့်နေရာ -->
+        <p id="countdown-message">ခလုတ်ပေါ်ရန် <span id="timer">10</span> စက္ကန့်စောင့်ပါ...</p>
+
+        <!-- ခလုတ်ကို ဒီ div ထဲမှာထည့်ပြီး အစမှာ ဖျောက်ထားပါမည် -->
+        <div id="button-wrapper">
+            <p>အောက်ပါခလုတ်ကိုနှိပ်ပြီး ဒုတိယစာမျက်နှာသို့ သွားပါ။</p>
+            <a href="page2.html" class="button">ဒုတိယစာမျက်နှာသို့ သွားရန်</a>
+        </div>
+    </div>
+
+    <script>
+        // Countdown အတွက် JavaScript
+        let secondsLeft = 10;
+        const timerElement = document.getElementById('timer');
+        const countdownMessageElement = document.getElementById('countdown-message');
+        const buttonWrapperElement = document.getElementById('button-wrapper');
+
+        const countdownInterval = setInterval(() => {
+            secondsLeft--;
+            timerElement.textContent = secondsLeft;
+
+            if (secondsLeft <= 0) {
+                clearInterval(countdownInterval); // Interval ကို ရပ်မည်
+                countdownMessageElement.style.display = 'none'; // Countdown စာကို ဖျောက်မည်
+                buttonWrapperElement.style.display = 'block'; // ခလုတ်ကို ပြမည်
+            }
+        }, 1000); // 1000ms = 1 second
+    </script>
+
+</body>
+</html>

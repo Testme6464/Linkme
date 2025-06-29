@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ဒုတိယ စာမျက်နှာ</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        /* Countdown text အတွက် style */
+        #countdown-message {
+            font-size: 18px;
+            color: #555;
+        }
+        #timer {
+            font-weight: bold;
+            color: #d9534f;
+        }
+        /* ခလုတ်တွေကို အစမှာ ဖျောက်ထားရန် */
+        #button-wrapper {
+            display: none;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            margin-top: 20px;
+            margin-right: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .link-button {
+            background-color: #28a745;
+        }
+        .link-button:hover {
+            background-color: #218838;
+        }
+        .back-button {
+            background-color: #6c757d;
+        }
+        .back-button:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>ဒုတိယ စာမျက်နှာ (Page 2)</h1>
+        
+        <!-- Countdown ပြသမည့်နေရာ -->
+        <p id="countdown-message">ခလုတ်များပေါ်ရန် <span id="timer">10</span> စက္ကန့်စောင့်ပါ...</p>
+        
+        <!-- ခလုတ်များကို ဒီ div ထဲမှာထည့်ပြီး အစမှာ ဖျောက်ထားပါမည် -->
+        <div id="button-wrapper">
+             <p>ဒီနေရာမှာ သင့်ရဲ့ Link ကို ထည့်ထားတဲ့ ခလုတ်ရှိပါတယ်။</p>
+            <!-- ဒီနေရာက href="#" မှာ # ကို သင်ထည့်ချင်တဲ့ link နဲ့ အစားထိုးပါ -->
+            <a href="#" class="button link-button">Link သို့ သွားရန်</a>
+            <a href="index.html" class="button back-button">နောက်သို့ ပြန်သွားရန်</a>
+        </div>
+    </div>
+
+    <script>
+        // Countdown အတွက် JavaScript
+        let secondsLeft = 10;
+        const timerElement = document.getElementById('timer');
+        const countdownMessageElement = document.getElementById('countdown-message');
+        const buttonWrapperElement = document.getElementById('button-wrapper');
+
+        const countdownInterval = setInterval(() => {
+            secondsLeft--;
+            timerElement.textContent = secondsLeft;
+
+            if (secondsLeft <= 0) {
+                clearInterval(countdownInterval); // Interval ကို ရပ်မည်
+                countdownMessageElement.style.display = 'none'; // Countdown စာကို ဖျောက်မည်
+                buttonWrapperElement.style.display = 'block'; // ခလုတ်တွေကို ပြမည်
+            }
+        }, 1000); // 1000ms = 1 second
+    </script>
+
+</body>
+</html>
