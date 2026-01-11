@@ -3,165 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ပထမ စာမျက်နှာ</title>
+    <title>MM-CN Voice Translator</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .app-container { background: white; width: 95%; max-width: 420px; height: 85vh; border-radius: 30px; display: flex; flex-direction: column; box-shadow: 0 20px 40px rgba(0,0,0,0.1); overflow: hidden; }
+        
+        .display-area { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 30px; text-align: center; }
+        .status { font-size: 14px; color: #d32f2f; font-weight: bold; margin-bottom: 20px; text-transform: uppercase; }
+        .original { font-size: 18px; color: #888; min-height: 30px; }
+        .translated { font-size: 26px; font-weight: bold; color: #333; margin-top: 15px; }
+
+        .footer { background: #fff1f1; padding: 30px; display: flex; flex-direction: column; align-items: center; border-radius: 40px 40px 0 0; gap: 20px; }
+        
+        .controls-row { display: flex; align-items: center; gap: 25px; }
+
+        /* အဓိက အသံဖမ်းခလုတ် */
+        .main-mic-btn {
+            width: 95px; height: 95px; border-radius: 50%; border: 5px solid #fff;
+            background-size: cover; background-position: center; cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15); transition: 0.3s;
+            display: flex; align-items: center; justify-content: center;
         }
-        .container {
-            text-align: center;
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        /* အလံပုံများကို China သို့ ပြောင်းထားသည် */
+        .btn-mm { background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('https://flagcdn.com/w320/mm.png'); }
+        .btn-cn { background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('https://flagcdn.com/w320/cn.png'); }
+
+        /* ဘာသာစကား ပြောင်းလဲသည့် ခလုတ် */
+        .switch-btn {
+            width: 55px; height: 55px; border-radius: 50%; border: none;
+            background: #fff; color: #d32f2f; font-size: 24px; cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;
+            transition: 0.3s;
         }
-        h1 {
-            color: #333;
-        }
-        /* Countdown text အတွက် style */
-        #countdown-message {
-            font-size: 18px;
-            color: #555;
-        }
-        #timer {
-            font-weight: bold;
-            color: #d9534f;
-        }
-        /* ခလုတ်ကို အစမှာ ဖျောက်ထားရန် */
-        #button-wrapper {
-            display: none;
-        }
-        .button {
-            display: inline-block;
-            padding: 12px 24px;
-            margin-top: 20px;
-            font-size: 16px;
-            font-weight: bold;
-            color: white;
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .button:hover {
-            background-color: #0056b3;
-        }
+        .switch-btn:active { transform: rotate(180deg); }
+
+        .listening { transform: scale(1.1); animation: pulse 1.5s infinite; border-color: #d32f2f; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.6); } 70% { box-shadow: 0 0 0 20px rgba(211, 47, 47, 0); } 100% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); } }
+        
+        .hint { font-size: 13px; color: #d32f2f; font-weight: 500; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>(Page 1)</h1>
-
-<script type="text/javascript">
-	atOptions = {
-		'key' : '678aa6a3aa7dd59cc23ca4862af07a45',
-		'format' : 'iframe',
-		'height' : 50,
-		'width' : 320,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/678aa6a3aa7dd59cc23ca4862af07a45/invoke.js"></script>
-
-<script type="text/javascript">
-	atOptions = {
-		'key' : '35f888d92129dbaacbe18e151cb40d58',
-		'format' : 'iframe',
-		'height' : 60,
-		'width' : 468,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/35f888d92129dbaacbe18e151cb40d58/invoke.js"></script>
-
-
-<script type="text/javascript">
-	atOptions = {
-		'key' : '1587b10ce9421ea9d9f2521420797ebe',
-		'format' : 'iframe',
-		'height' : 300,
-		'width' : 160,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/1587b10ce9421ea9d9f2521420797ebe/invoke.js"></script>
-
-<script type="text/javascript">
-	atOptions = {
-		'key' : '2d5f415969444e4d2e3400ffac82a7be',
-		'format' : 'iframe',
-		'height' : 600,
-		'width' : 160,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/2d5f415969444e4d2e3400ffac82a7be/invoke.js"></script>
-
-<script type="text/javascript">
-	atOptions = {
-		'key' : 'b70187c9195ea2e89150544e16ee6851',
-		'format' : 'iframe',
-		'height' : 250,
-		'width' : 300,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/b70187c9195ea2e89150544e16ee6851/invoke.js"></script>
-
-<script>
-(function(abn){
-var d = document,
-    s = d.createElement('script'),
-    l = d.scripts[d.scripts.length - 1];
-s.settings = abn || {};
-s.src = "\/\/faithfuldifficulty.com\/b.XDVYs\/dyGPl\/0gYmWPcJ\/ee\/mH9\/uXZjUUlKk_PmTyY\/0qNxjGIzzzOvTUY\/tQNljkQJ2XMmj\/Ms5jNqwr";
-s.async = true;
-s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
-})({})
-</script>
-
-
-        <p> ⏬⏬⏬ </p>
-        <!-- Countdown ပြသမည့်နေရာ -->
-        <p id="countdown-message">ခလုတ်ပေါ်ရန် <span id="timer">10</span> စက္ကန့်စောင့်ပါ...</p>
-
-        <!-- ခလုတ်ကို ဒီ div ထဲမှာထည့်ပြီး အစမှာ ဖျောက်ထားပါမည် -->
-        <div id="button-wrapper">
-            
-            <a href="page2.html" class="button">ဒုတိယစာမျက်နှာသို့ သွားရန်</a>
-        </div>
+<div class="app-container">
+    <div class="display-area">
+        <div class="status" id="langLabel">MYANMAR MODE</div>
+        <div class="original" id="origText">နှိပ်ပြီး စကားပြောပါ</div>
+        <div class="translated" id="transText"></div>
     </div>
 
-    <script>
-        // Countdown အတွက် JavaScript
-        let secondsLeft = 10;
-        const timerElement = document.getElementById('timer');
-        const countdownMessageElement = document.getElementById('countdown-message');
-        const buttonWrapperElement = document.getElementById('button-wrapper');
+    <div class="footer">
+        <div class="controls-row">
+            <button class="main-mic-btn btn-mm" id="micBtn" onclick="toggleMic()">
+                <span style="font-size:32px; color:white; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">🎤</span>
+            </button>
 
-        const countdownInterval = setInterval(() => {
-            secondsLeft--;
-            timerElement.textContent = secondsLeft;
+            <button class="switch-btn" onclick="manualSwitch()" title="Switch Language">
+                🔄
+            </button>
+        </div>
+        <div class="hint" id="hintText">မြန်မာဘာသာကို နားထောင်မည်</div>
+    </div>
+</div>
 
-            if (secondsLeft <= 0) {
-                clearInterval(countdownInterval); // Interval ကို ရပ်မည်
-                countdownMessageElement.style.display = 'none'; // Countdown စာကို ဖျောက်မည်
-                buttonWrapperElement.style.display = 'block'; // ခလုတ်ကို ပြမည်
+<script>
+    let recognition;
+    let isListening = false;
+    let currentInputLang = 'my-MM'; 
+
+    function speak(text, lang) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        window.speechSynthesis.speak(utterance);
+    }
+
+    function manualSwitch() {
+        if (isListening) recognition.stop();
+        switchLanguageLogic();
+    }
+
+    function switchLanguageLogic() {
+        const micBtn = document.getElementById('micBtn');
+        const langLabel = document.getElementById('langLabel');
+        const hintText = document.getElementById('hintText');
+
+        if (currentInputLang === 'my-MM') {
+            currentInputLang = 'zh-CN'; // China (Mandarin)
+            micBtn.className = 'main-mic-btn btn-cn';
+            langLabel.innerText = "CHINESE MODE";
+            hintText.innerText = "တရုတ်ဘာသာကို နားထောင်မည်";
+        } else {
+            currentInputLang = 'my-MM';
+            micBtn.className = 'main-mic-btn btn-mm';
+            langLabel.innerText = "MYANMAR MODE";
+            hintText.innerText = "မြန်မာဘာသာကို နားထောင်မည်";
+        }
+    }
+
+    function toggleMic() {
+        if (isListening) {
+            recognition.stop();
+            return;
+        }
+        startListening();
+    }
+
+    function startListening() {
+        if (!('webkitSpeechRecognition' in window)) {
+            alert("Chrome Browser ကို သုံးပေးပါ။");
+            return;
+        }
+
+        recognition = new webkitSpeechRecognition();
+        recognition.lang = currentInputLang;
+        
+        const micBtn = document.getElementById('micBtn');
+
+        recognition.onstart = () => {
+            isListening = true;
+            micBtn.classList.add('listening');
+        };
+
+        recognition.onresult = async (event) => {
+            const transcript = event.results[0][0].transcript;
+            document.getElementById('origText').innerText = transcript;
+
+            const targetLang = (currentInputLang === 'my-MM') ? 'zh-CN' : 'my';
+
+            try {
+                // Google Translate API (Myanmar - Chinese)
+                const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=${currentInputLang.split('-')[0]}&tl=${targetLang}&dt=t&q=${encodeURI(transcript)}`);
+                const data = await res.json();
+                const translated = data[0][0][0];
+
+                document.getElementById('transText').innerText = translated;
+                
+                // တရုတ်အသံထွက်ရန် zh-CN သုံးသည်
+                speak(translated, targetLang === 'zh-CN' ? 'zh-CN' : 'my-MM');
+
+                // အလှည့်ကျ အလိုအလျောက် ပြောင်းပေးခြင်း
+                switchLanguageLogic();
+
+            } catch (e) {
+                console.error("Error during translation:", e);
             }
-        }, 1000); // 1000ms = 1 second
-    </script>
+        };
 
-<script type='text/javascript' src='//valestumble.com/6f/1e/d0/6f1ed0477d2304438aed04888459bba5.js'></script>
-	
+        recognition.onend = () => {
+            isListening = false;
+            micBtn.classList.remove('listening');
+        };
+
+        recognition.start();
+    }
+</script>
+
 </body>
 </html>
